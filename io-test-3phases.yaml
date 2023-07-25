@@ -1,0 +1,25 @@
+config:
+  target: "http://34.64.86.113:80"
+  phases:
+    # a load phase which lasts duration seconds, where arrivalRate new virtual users will be created every second
+    - duration: 60
+      arrivalRate: 3
+      name: Warm up
+    - duration: 120
+      arrivalRate: 3
+      rampTo: 100
+      name: Ramp up load
+    - duration: 60
+      arrivalRate: 100
+      name: Sustained load
+  payload:
+    path: "ratings_test_10k.csv"
+    fields:
+      - "content"
+scenarios:
+  - name: just post content
+    flow:
+      - post:
+          url: "/post"
+          json:
+            content: "{{ content }}"
