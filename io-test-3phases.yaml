@@ -1,5 +1,5 @@
 config:
-  target: "http://34.64.86.113:80"
+  target: "http://35.216.52.91:80"
   phases:
     # a load phase which lasts duration seconds, where arrivalRate new virtual users will be created every second
     - duration: 60
@@ -7,13 +7,13 @@ config:
       name: Warm up
     - duration: 120
       arrivalRate: 3
-      rampTo: 100
+      rampTo: 50
       name: Ramp up load
-    - duration: 60
-      arrivalRate: 100
+    - duration: 600
+      arrivalRate: 50
       name: Sustained load
   payload:
-    path: "ratings_test_10k.csv"
+    path: "data/ratings_test_10k.csv"
     fields:
       - "content"
 scenarios:
@@ -23,3 +23,6 @@ scenarios:
           url: "/post"
           json:
             content: "{{ content }}"
+      - think: 1
+      - get:
+          url: "/posts"

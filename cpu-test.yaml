@@ -1,5 +1,5 @@
 config:
-  target: "http://34.22.73.187:8080"
+  target: "http://35.216.52.91:8080"
   phases:
     # a load phase which lasts 60 seconds, where 5 new virtual users will be created every second
     - duration: 120

@@ -1,5 +1,5 @@
 config:
-  target: "http://34.64.86.113:80"
+  target: "http://35.216.52.91:80"
   phases:
     # a load phase which lasts duration seconds, where arrivalRate new virtual users will be created every second
     - duration: 333
